@@ -288,6 +288,157 @@ a:focus-visible {
   color: var(--color-text-primary);
 }
 
+/* Shared protected-page layout */
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+.app-header {
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.app-nav.container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-large);
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: var(--spacing-large);
+}
+
+.app-logo {
+  color: var(--color-accent);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.app-logo:hover {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.nav-link {
+  padding: 0.75rem var(--spacing-medium);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.nav-link:hover {
+  background-color: rgb(240 79 120 / 8%);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  border-color: var(--color-accent);
+  background-color: rgb(240 79 120 / 16%);
+  color: var(--color-text-primary);
+}
+
+.nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  margin-top: auto;
+}
+
+.nav-actions button {
+  width: 100%;
+  border-color: var(--color-border);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.nav-actions button:hover {
+  border-color: var(--color-accent);
+  background-color: rgb(240 79 120 / 10%);
+  color: var(--color-text-primary);
+}
+
+#logout-button:hover {
+  border-color: var(--color-error);
+  background-color: rgb(255 92 108 / 10%);
+}
+
+.page-content {
+  min-width: 0;
+  width: 100%;
+  padding: clamp(var(--spacing-medium), 4vw, 3rem);
+}
+
+.page-content > .container {
+  max-width: 75rem;
+  padding-inline: 0;
+}
+
+@media (max-width: 48rem) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .app-nav.container {
+    position: static;
+    min-height: auto;
+    padding: var(--spacing-medium);
+  }
+
+  .nav-links,
+  .nav-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    flex: 1 1 8rem;
+    text-align: center;
+  }
+
+  .nav-actions {
+    margin-top: 0;
+  }
+
+  .nav-actions button {
+    flex: 1 1 9rem;
+    width: auto;
+  }
+
+  .page-content {
+    padding: var(--spacing-medium);
+  }
+}
+
 @media (max-width: 40rem) {
   :root {
     --spacing-large: 1.5rem;
