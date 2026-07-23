@@ -10,8 +10,31 @@
   <script src="js/dashboard.js" defer></script>
 </head>
 <body data-page-access="protected">
-  <main>
-    <h1>Dashboard</h1>
-  </main>
+  <div class="app-layout">
+    <header class="app-header">
+      <nav class="app-nav container" aria-label="Primary navigation">
+        <a class="app-logo" href="dashboard.html">10X CRM</a>
+
+        <div class="nav-links">
+          <a class="nav-link active" href="dashboard.html" aria-current="page">Dashboard</a>
+          <a class="nav-link" href="clients.html">Clients</a>
+          <a class="nav-link" href="profile.html">Profile</a>
+        </div>
+
+        <div class="nav-actions">
+          <button id="theme-toggle" type="button">Toggle Theme</button>
+          <button id="logout-button" type="button">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <div class="container">
+        <section class="page-section" aria-labelledby="dashboard-heading">
+          <h1 id="dashboard-heading">Dashboard</h1>
+        </section>
+      </div>
+    </main>
+  </div>
 </body>
 </html>

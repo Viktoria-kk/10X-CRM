@@ -1,17 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10x CRM - Profile</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/storage.js" defer></script>
-    <script src="js/guard.js" defer></script>
-    <script src="js/profile.js" defer></script>
-  </head>
-  <body data-page-access="protected">
-    <main>
-      <h1>Profile</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10x CRM - Profile</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/storage.js" defer></script>
+  <script src="js/guard.js" defer></script>
+  <script src="js/profile.js" defer></script>
+</head>
+<body data-page-access="protected">
+  <div class="app-layout">
+    <header class="app-header">
+      <nav class="app-nav container" aria-label="Primary navigation">
+        <a class="app-logo" href="dashboard.html">10X CRM</a>
+
+        <div class="nav-links">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+          <a class="nav-link" href="clients.html">Clients</a>
+          <a class="nav-link active" href="profile.html" aria-current="page">Profile</a>
+        </div>
+
+        <div class="nav-actions">
+          <button id="theme-toggle" type="button">Toggle Theme</button>
+          <button id="logout-button" type="button">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <div class="container">
+        <section class="page-section" aria-labelledby="profile-heading">
+          <h1 id="profile-heading">Profile</h1>
+        </section>
+      </div>
     </main>
-  </body>
+  </div>
+</body>
 </html>
