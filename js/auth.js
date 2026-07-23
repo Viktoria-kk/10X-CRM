@@ -164,16 +164,27 @@ if (loginForm) {
     }
 
     const users = getUsers();
-    const matchingUser = users.find(function (user) {
+    const matchedUser = users.find(function (user) {
       return user.email === email && user.password === password;
     });
 
-    if (!matchingUser) {
+    if (!matchedUser) {
       formMessage.textContent = "Invalid email or password";
       formMessage.classList.add("error");
       return;
     }
 
-    // Successful login and session logic will be added here next.
+    const session = {
+      userId: matchedUser.id,
+      email: matchedUser.email,
+      loginAt: new Date().toISOString()
+    };
+
+    const submitButton = loginForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = "Logging in...";
+
+    saveSession(session);
+    window.location.href = "dashboard.html";
   });
 }
