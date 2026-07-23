@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>10x CRM - Clients</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/storage.js" defer></script>
+  <script src="js/guard.js" defer></script>
   <script src="js/clients.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      protectPage();
+    });
+  </script>
 </head>
 <body>
   <main>
