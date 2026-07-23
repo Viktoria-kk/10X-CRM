@@ -89,8 +89,44 @@ if (signupForm) {
   signupForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    if (validateSignupForm()) {
-      // Future registration logic will be added here.
+    if (!validateSignupForm()) {
+      return;
     }
+
+    const fullName = document.getElementById("signup-full-name").value.trim();
+    const email = document
+      .getElementById("signup-email")
+      .value.trim()
+      .toLowerCase();
+    const company = document.getElementById("signup-company").value.trim();
+    const password = document.getElementById("signup-password").value;
+
+    const newUser = {
+      id: Date.now(),
+      fullName: fullName,
+      email: email,
+      password: password,
+      company: company,
+      createdAt: new Date().toISOString()
+    };
+
+    const users = getUsers();
+    users.push(newUser);
+    saveUsers(users);
+
+    const formMessage = signupForm.querySelector(".form-message");
+    formMessage.textContent = "Account created successfully! Please log in.";
+    formMessage.classList.add("success");
+    formMessage.classList.remove("error");
+
+    const submitButton = signupForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = "Account Created";
+
+    signupForm.reset();
+
+    setTimeout(function () {
+      window.location.href = "index.html";
+    }, 1500);
   });
 }
