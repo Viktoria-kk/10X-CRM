@@ -1,4 +1,5 @@
 const signupForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
 
 function showFieldError(input, message) {
   input.classList.add("input-error");
@@ -128,5 +129,51 @@ if (signupForm) {
     setTimeout(function () {
       window.location.href = "index.html";
     }, 1500);
+  });
+}
+
+if (loginForm) {
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const emailInput = document.getElementById("login-email");
+    const passwordInput = document.getElementById("login-password");
+    const formMessage = loginForm.querySelector(".form-message");
+
+    clearFieldError(emailInput);
+    clearFieldError(passwordInput);
+    formMessage.textContent = "";
+    formMessage.classList.remove("success", "error");
+
+    const email = emailInput.value.trim().toLowerCase();
+    const password = passwordInput.value;
+    let isValid = true;
+
+    if (email === "") {
+      showFieldError(emailInput, "Email is required");
+      isValid = false;
+    }
+
+    if (password === "") {
+      showFieldError(passwordInput, "Password is required");
+      isValid = false;
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    const users = getUsers();
+    const matchingUser = users.find(function (user) {
+      return user.email === email && user.password === password;
+    });
+
+    if (!matchingUser) {
+      formMessage.textContent = "Invalid email or password";
+      formMessage.classList.add("error");
+      return;
+    }
+
+    // Successful login and session logic will be added here next.
   });
 }
