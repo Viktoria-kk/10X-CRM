@@ -13,3 +13,15 @@ function redirectAuthenticatedUser() {
     window.location.href = "dashboard.html";
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const pageAccess = document.body.dataset.pageAccess;
+
+  if (pageAccess === "protected") {
+    protectPage();
+  }
+
+  if (pageAccess === "public") {
+    redirectAuthenticatedUser();
+  }
+});
